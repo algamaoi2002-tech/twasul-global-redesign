@@ -391,12 +391,41 @@
       .footer-links a:hover { color: #f3a5dc; }
       .whatsapp-float { box-shadow: 0 8px 24px rgba(36,16,71,.25); }
 
+      body { background: radial-gradient(ellipse at 50% 20%, #321548, #120d1b 68%); }
+      .site-header { border-color: rgba(235,218,255,.14); background: rgba(22,14,32,.94); }
+      .brand { color: #fbf5ff; }
+      .nav-links a { color: #e2d5ee; }
+      .menu-toggle { border-color: rgba(235,218,255,.2); background: #251832; color: #fbf5ff; }
+      .section, .section-soft, .trust-strip { background: transparent; }
+      .section::before, .trust-strip::before {
+        background:
+          radial-gradient(ellipse at 15% 18%, rgba(225,75,166,.14), transparent 42%),
+          radial-gradient(ellipse at 84% 52%, rgba(126,78,218,.17), transparent 44%),
+          radial-gradient(ellipse at 48% 100%, rgba(255,158,116,.08), transparent 40%);
+      }
+      .section-heading h2, .about-copy h2, .section-heading > p:last-child,
+      .about-copy > p:not(.eyebrow), .value-item strong, .value-item span,
+      .trust-row p, .trust-points span, .pricing-note, .testimonial-disclaimer,
+      .portfolio-note { color: #f5eafa; }
+      .eyebrow { color: #ff9ad0; }
+      .service-card, .price-card, .testimonial-card { color: var(--navy); }
+      .service-card p, .price-intro, .testimonial-name span { color: var(--muted); }
+      .price-features li, .testimonial-card blockquote { color: #465267; }
+      .ad-budget-note { color: var(--navy-soft); }
+      .ad-budget-copy strong { color: var(--navy); }
+      .ad-budget-copy p { color: var(--muted); }
+      .contact-form { color: var(--navy); }
+      .field input, .field select, .field textarea { background: #fcfcfd; color: var(--navy); }
+      .site-footer { background: #0c0812; }
+
       @media (max-width: 760px) {
         .hero { padding: 54px 0 62px; }
         .hero-grid { gap: 30px; }
         .hero-visual { min-height: 340px; }
         .hero-photo { inset-inline: 8px; }
         .section { padding-block: 72px; }
+        .nav-links { border-color: rgba(235,218,255,.16); background: #191122; box-shadow: 0 18px 25px rgba(5,2,12,.4); }
+        .nav-links li { border-color: rgba(235,218,255,.12); }
       }
       @media (max-width: 430px) {
         .announcement-bar { padding: 8px 14px; }
