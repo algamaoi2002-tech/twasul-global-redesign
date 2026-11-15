@@ -59,7 +59,6 @@
       .nav-links { display: flex; align-items: center; gap: clamp(15px, 2.3vw, 30px); margin: 0; padding: 0; list-style: none; }
       .nav-links a { color: #4f5a6b; font-size: .96rem; font-weight: 700; transition: color .2s ease; }
       .nav-links a:hover, .nav-links a[aria-current="location"] { color: var(--orange-dark); }
-      .nav-cta { min-height: 44px; padding: 8px 16px; font-size: .9rem; }
       .menu-toggle { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 9px; background: white; color: var(--navy); cursor: pointer; }
       .menu-toggle svg { width: 23px; height: 23px; }
 
@@ -220,9 +219,6 @@
       .footer-links { display: flex; align-items: center; gap: 16px; }
       .footer-links a { color: #d5dce7; font-size: .88rem; transition: color .2s ease; }
       .footer-links a:hover { color: #ffae7f; }
-      .whatsapp-float { position: fixed; z-index: 8; right: 22px; bottom: 22px; display: grid; width: 55px; height: 55px; place-items: center; border: 3px solid white; border-radius: 50%; background: #22b86b; color: white; box-shadow: 0 8px 24px rgba(16,27,53,.22); transition: transform .2s ease; }
-      .whatsapp-float:hover { transform: translateY(-3px); }
-      .whatsapp-float svg { width: 28px; height: 28px; }
 
       @media (max-width: 980px) {
         .nav { gap: 16px; }
@@ -238,7 +234,6 @@
         .section { padding: 76px 0; }
         .nav { min-height: 70px; }
         .menu-toggle { display: flex; }
-        .nav-cta { display: none; }
         .nav-links { position: absolute; top: calc(100% + 1px); right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 8px 22px 18px; border-bottom: 1px solid var(--line); background: white; box-shadow: 0 18px 25px rgba(16,27,53,.07); }
         .nav-links.is-open { display: flex; flex-direction: column; }
         .nav-links li { border-bottom: 1px solid #f0efed; }
@@ -298,7 +293,6 @@
         .testimonial-card { min-height: unset; padding: 21px; }
         .form-row { grid-template-columns: 1fr; gap: 0; }
         .footer-row { align-items: flex-start; flex-direction: column; }
-        .whatsapp-float { right: 14px; bottom: 14px; width: 50px; height: 50px; }
       }
       @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
@@ -389,7 +383,6 @@
       .field input:focus, .field select:focus, .field textarea:focus { border-color: #b13dc3; box-shadow: 0 0 0 3px rgba(177,61,195,.13); }
       .site-footer { background: #201034; }
       .footer-links a:hover { color: #f3a5dc; }
-      .whatsapp-float { box-shadow: 0 8px 24px rgba(36,16,71,.25); }
 
       body { background: radial-gradient(ellipse at 50% 20%, #321548, #120d1b 68%); }
       .site-header { border-color: rgba(235,218,255,.14); background: rgba(22,14,32,.94); }
@@ -418,12 +411,20 @@
       .field input, .field select, .field textarea { background: #fcfcfd; color: var(--navy); }
       .site-footer { background: #0c0812; }
 
+      .promo-film-section { overflow: hidden; padding-block: 42px 82px; }
+      .promo-film { position: relative; overflow: hidden; border: 1px solid rgba(238,205,255,.2); border-radius: 24px; background: #100a18; box-shadow: 0 28px 80px rgba(8,3,18,.42); }
+      .promo-film-canvas { position: absolute; width: 0; height: 0; opacity: 0; pointer-events: none; }
+      .promo-film video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #100a18; object-fit: cover; }
+      .promo-film-status { margin: 12px 0 0; color: #ffacd7; text-align: center; }
+      .contact-actions { margin-top: 24px; }
+
       @media (max-width: 760px) {
         .hero { padding: 54px 0 62px; }
         .hero-grid { gap: 30px; }
         .hero-visual { min-height: 340px; }
         .hero-photo { inset-inline: 8px; }
         .section { padding-block: 72px; }
+        .promo-film-section { padding-block: 25px 62px; }
         .nav-links { border-color: rgba(235,218,255,.16); background: #191122; box-shadow: 0 18px 25px rgba(5,2,12,.4); }
         .nav-links li { border-color: rgba(235,218,255,.12); }
       }
@@ -432,8 +433,6 @@
         .announcement-bar a { font-size: .78rem; }
         .hero-visual { min-height: 290px; }
         .hero-photo { border-radius: 20px; }
-        .hero-actions { flex-direction: column; }
-        .hero-actions .button { width: 100%; }
       }
     </style>
   </head>
@@ -460,7 +459,6 @@
           <li><a href="#pricing">الباقات</a></li>
           <li><a href="#contact">تواصل معنا</a></li>
         </ul>
-        <a class="button nav-cta" href="#contact">احجز مكالمتك المجانية</a>
       </nav>
     </header>
 
@@ -471,16 +469,6 @@
             <p class="eyebrow">شريكك الإبداعي في النمو الرقمي</p>
             <h1>نساعدك على نمو أعمالك عبر <span>التسويق الاحترافي</span></h1>
             <p>نقدم خدمات إدارة الحسابات وصناعة المحتوى والإعلانات الرقمية لتحقيق أفضل النتائج وزيادة وصول علامتك التجارية إلى جمهورها المستهدف.</p>
-            <div class="hero-actions">
-              <a class="button" href="#contact">
-              احجز مكالمتك المجانية
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m0 0 6 6m-6-6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-              <a class="button button-outline" href="https://wa.me/966544835151" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.7a8 8 0 0 1-11.8 7l-4.2 1.1 1.1-4.1A8 8 0 1 1 20 11.7Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 8.5c.2-.5.4-.5.7-.5h.5c.2 0 .4 0 .5.4l.7 1.6c.1.3.1.5-.1.7l-.5.6c-.2.2-.2.4 0 .6.4.7 1 1.3 1.8 1.7.2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.7-.1l1.5.7c.3.1.4.3.4.5 0 .3-.2 1-.7 1.4-.5.5-1.2.6-2 .5-1-.2-2.2-.7-3.5-1.9-1.3-1.2-2-2.5-2.2-3.5-.2-.8.1-1.4.4-1.8Z" fill="currentColor"/></svg>
-                تحدث معنا واتساب
-              </a>
-            </div>
             <div class="hero-proof">
               <span class="proof-badge" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -502,6 +490,17 @@
             </div>
             <span class="social-orbit" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M7 7h10v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </div>
+        </div>
+      </section>
+
+      <section class="section promo-film-section" id="promo-video" aria-label="فيديو تعريفي عن تواصل">
+        <div class="container">
+          <div class="promo-film">
+            <canvas class="promo-film-canvas" width="960" height="540" aria-hidden="true"></canvas>
+            <video autoplay muted loop playsinline poster="marketing-strategy-team.jpg" aria-label="فيديو تواصل التعريفي عن التسويق وبناء الحضور الرقمي">
+            </video>
+          </div>
+          <p class="promo-film-status" role="status" aria-live="polite" hidden></p>
         </div>
       </section>
 
@@ -849,10 +848,6 @@
       </div>
     </footer>
 
-    <a class="whatsapp-float" href="https://wa.me/966544835151" target="_blank" rel="noopener noreferrer" aria-label="تواصل معنا عبر واتساب">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.7a8 8 0 0 1-11.8 7l-4.2 1.1 1.1-4.1A8 8 0 1 1 20 11.7Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 8.5c.2-.5.4-.5.7-.5h.5c.2 0 .4 0 .5.4l.7 1.6c.1.3.1.5-.1.7l-.5.6c-.2.2-.2.4 0 .6.4.7 1 1.3 1.8 1.7.2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.7-.1l1.5.7c.3.1.4.3.4.5 0 .3-.2 1-.7 1.4-.5.5-1.2.6-2 .5-1-.2-2.2-.7-3.5-1.9-1.3-1.2-2-2.5-2.2-3.5-.2-.8.1-1.4.4-1.8Z" fill="currentColor"/></svg>
-    </a>
-
     <script>
       const menuButton = document.querySelector(".menu-toggle");
       const menu = document.querySelector("#site-menu");
@@ -873,6 +868,114 @@
       });
 
       document.querySelector("#current-year").textContent = new Date().getFullYear();
+
+      const promoFilm = document.querySelector(".promo-film");
+      const promoVideo = promoFilm.querySelector("video");
+      const promoCanvas = promoFilm.querySelector("canvas");
+      const promoContext = promoCanvas.getContext("2d");
+      const promoStatus = document.querySelector(".promo-film-status");
+      const promoScenes = [
+        ["لكل علامة حكاية", "تستحق أن تُروى وتصل إلى جمهورها."],
+        ["نبدأ بفهم أهدافك", "ونبني استراتيجية تناسب طموحك."],
+        ["نصنع محتوى يعبّر عنك", "من الفكرة إلى النشر بهوية تليق بعلامتك."],
+        ["نصل برسالتك", "بحملات إعلانية تصل إلى جمهورها المستهدف."],
+        ["نتابع الأداء", "ونطوّر خطواتنا باستمرار."],
+        ["تجربة تواصل", "تبدأ بفكرتك وتنتهي بأثر ملموس."],
+      ];
+
+      const showPromoFilmError = (error) => {
+        console.error("Unable to start the promotional film.", error);
+        promoStatus.textContent = "تعذّر تشغيل الفيديو تلقائياً. يرجى تحديث الصفحة أو التحقق من إعدادات المتصفح.";
+        promoStatus.hidden = false;
+      };
+
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        Promise.all(["marketing-strategy-team.jpg", "content-creation-team.jpg"].map((src) => new Promise((resolve, reject) => {
+          const image = new Image();
+          image.onload = () => resolve(image);
+          image.onerror = () => reject(new Error(`Unable to load promotional image: ${src}`));
+          image.src = src;
+        }))).then((images) => {
+          const sceneDuration = 5000;
+          const filmDuration = sceneDuration * promoScenes.length;
+          const drawImageCover = (image, zoom) => {
+            const scale = Math.max(promoCanvas.width / image.width, promoCanvas.height / image.height) * zoom;
+            const width = image.width * scale;
+            const height = image.height * scale;
+            const drift = Math.sin(zoom * 100) * 8;
+            promoContext.drawImage(image, (promoCanvas.width - width) / 2 + drift, (promoCanvas.height - height) / 2, width, height);
+          };
+          const drawScene = (elapsed) => {
+            const filmTime = elapsed % filmDuration;
+            const sceneIndex = Math.floor(filmTime / sceneDuration);
+            const sceneProgress = (filmTime % sceneDuration) / sceneDuration;
+            const fade = Math.min(sceneProgress / 0.14, 1);
+            const image = images[sceneIndex % images.length];
+            const previousImage = images[(sceneIndex + images.length - 1) % images.length];
+
+            drawImageCover(previousImage, 1.035);
+            promoContext.globalAlpha = fade;
+            drawImageCover(image, 1 + sceneProgress * 0.035);
+            promoContext.globalAlpha = 1;
+
+            const overlay = promoContext.createLinearGradient(0, 0, promoCanvas.width, 0);
+            overlay.addColorStop(0, "rgba(12, 5, 21, .16)");
+            overlay.addColorStop(.48, "rgba(12, 5, 21, .32)");
+            overlay.addColorStop(1, "rgba(12, 5, 21, .58)");
+            promoContext.fillStyle = overlay;
+            promoContext.fillRect(0, 0, promoCanvas.width, promoCanvas.height);
+
+            const textPanel = promoContext.createLinearGradient(360, 0, promoCanvas.width, 0);
+            textPanel.addColorStop(0, "rgba(15, 7, 25, 0)");
+            textPanel.addColorStop(.34, "rgba(15, 7, 25, .6)");
+            textPanel.addColorStop(1, "rgba(15, 7, 25, .72)");
+            promoContext.fillStyle = textPanel;
+            promoContext.fillRect(320, 0, promoCanvas.width - 320, promoCanvas.height);
+
+            promoContext.fillStyle = "#ff91c9";
+            promoContext.fillRect(72, 112, 7, 316);
+            promoContext.direction = "rtl";
+            promoContext.textAlign = "right";
+            promoContext.globalAlpha = fade;
+            promoContext.shadowColor = "rgba(10, 4, 18, .8)";
+            promoContext.shadowBlur = 12;
+            promoContext.fillStyle = "rgba(255, 255, 255, .86)";
+            promoContext.font = "bold 22px Arial";
+            promoContext.fillText("تواصل  •  نموّ رقمي", 870, 90);
+            promoContext.fillStyle = "#ffffff";
+            promoContext.font = sceneIndex === promoScenes.length - 1 ? "bold 48px Arial" : "bold 50px Arial";
+            promoContext.fillText(promoScenes[sceneIndex][0], 870, 248);
+            promoContext.fillStyle = "#ffacd7";
+            promoContext.font = "bold 32px Arial";
+            promoContext.fillText(promoScenes[sceneIndex][1], 870, 310, 760);
+            promoContext.shadowBlur = 0;
+            promoContext.globalAlpha = 1;
+
+            promoContext.fillStyle = "rgba(255, 255, 255, .82)";
+            promoContext.font = "22px Arial";
+            promoContext.fillText("استراتيجية  |  محتوى  |  إعلانات  |  نتائج", 870, 398);
+          };
+
+          let animationStart;
+          const animatePromoFilm = (timestamp) => {
+            if (animationStart === undefined) {
+              animationStart = timestamp;
+            }
+            drawScene(timestamp - animationStart);
+            window.requestAnimationFrame(animatePromoFilm);
+          };
+
+          drawScene(0);
+          window.requestAnimationFrame(animatePromoFilm);
+          if (typeof promoCanvas.captureStream !== "function") {
+            throw new Error("This browser does not support canvas video streams.");
+          }
+          promoVideo.srcObject = promoCanvas.captureStream(24);
+          promoVideo.play().then(() => {
+            promoStatus.hidden = true;
+          }).catch(showPromoFilmError);
+        }).catch(showPromoFilmError);
+      }
 
       const contactForm = document.querySelector("#contact-form");
       const bookingResult = document.querySelector("#booking-result");
