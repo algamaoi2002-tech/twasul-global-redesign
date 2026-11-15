@@ -352,12 +352,25 @@
       .growth-card .floating-icon { background: #e5f7f0; color: #25885f; }
       .social-orbit { border-color: #4f1380; background: linear-gradient(145deg, #ff7798, #a334d2); }
 
-      .section { padding-block: 94px; }
-      .section-soft { background: #faf8fd; }
+      .section { position: relative; isolation: isolate; padding-block: 94px; background: transparent; }
+      .section::before, .trust-strip::before {
+        position: absolute;
+        z-index: -1;
+        inset: -24px;
+        background:
+          radial-gradient(ellipse at 15% 18%, rgba(225, 75, 166, .2), transparent 42%),
+          radial-gradient(ellipse at 84% 52%, rgba(126, 78, 218, .17), transparent 44%),
+          radial-gradient(ellipse at 48% 100%, rgba(255, 158, 116, .14), transparent 40%);
+        filter: blur(48px);
+        content: "";
+        pointer-events: none;
+      }
+      .section-soft { background: transparent; }
       .eyebrow { color: #ac348c; }
       .section-heading { margin-inline: auto; text-align: center; }
       .section-heading h2, .about-copy h2, .contact-copy h2 { letter-spacing: -.035em; }
-      .trust-strip { background: #fff; }
+      .trust-strip { position: relative; isolation: isolate; overflow: hidden; border-color: #eee5f2; background: transparent; }
+      .trust-row { position: relative; z-index: 1; }
       .trust-points svg { color: #a33ab8; }
       .services-grid { gap: 20px; }
       .service-card { border-color: #eee7f3; border-radius: 18px; background: linear-gradient(145deg, #fff, #fcf9ff); box-shadow: 0 9px 28px rgba(52,26,75,.045); }
