@@ -1,0 +1,42 @@
+تواصل - ملفات الموقع
+====================
+
+يحتوي هذا المجلد على صفحة الموقع وصور محلية ونقطة API لحجز المكالمات.
+لا يحتاج الموقع إلى تثبيت حزم أو أمر بناء؛ الخطوط فقط تُحمّل من الإنترنت.
+
+النشر عبر GitHub وVercel
+-----------------------
+1. اربط مستودع twasul-marketing-site بحساب Vercel عبر Import Git Repository.
+2. اضبط Root Directory على جذر المستودع واختر Framework Preset: Other.
+3. اترك Build Command وOutput Directory فارغين، ثم أضف متغيرات البيئة أدناه.
+4. اختر Deploy؛ ستُنشر تحديثات main تلقائياً بعد رفعها إلى GitHub.
+
+إعداد إشعارات الحجز على Vercel
+------------------------------
+أضف متغيرات البيئة التالية من Project Settings > Environment Variables، ثم أعد النشر:
+
+- RESEND_API_KEY: مفتاح API من Resend.
+- RESEND_FROM_EMAIL: عنوان مرسل موثّق لدى Resend، مثل bookings@your-verified-domain.
+- WHATSAPP_ACCESS_TOKEN: رمز وصول WhatsApp Cloud API.
+- WHATSAPP_PHONE_NUMBER_ID: معرّف رقم WhatsApp Business المرسل من Meta.
+- WHATSAPP_API_VERSION: إصدار Graph API مدعوم في تطبيق Meta، بصيغة vXX.0.
+- WHATSAPP_TEMPLATE_NAME: اسم قالب الرسالة المعتمد في WhatsApp Manager.
+- WHATSAPP_TEMPLATE_LANGUAGE: رمز لغة القالب، والقيمة الافتراضية ar.
+
+يجب أن يكون قالب WhatsApp رسالة تسويقية/إشعارية معتمدة، وبداخله أربعة عناصر نصية
+بالترتيب: اسم العميل، رقم جواله، الخدمة، وتفاصيل المشروع. تُرسل بيانات الحجز
+إلى البريد algamaoi2002@hotmail.com ورقم WhatsApp 966544835151.
+تأكد من تفعيل الرقم المستلِم للسماح بوصول رسائل WhatsApp Business.
+
+لا تضع مفاتيح API أو رموز الوصول في ملفات الموقع أو المستودع؛ خزّنها في إعدادات
+Environment Variables في Vercel. لا تظهر رسالة نجاح الحجز للعميل إلا بعد نجاح
+إرسال إشعاري البريد وWhatsApp. إذا فشل الإرسال، يُطلب منه المحاولة مرة أخرى.
+
+تنبيه
+-----
+آراء العملاء في الصفحة نماذج تجريبية بأسماء افتراضية، وليست شهادات حقيقية.
+استبدلها بآراء حقيقية بعد أخذ موافقة أصحابها قبل النشر.
+
+صور الفريق:
+- content-creation-team.jpg: تصوير وإنتاج محتوى.
+- marketing-strategy-team.jpg: تخطيط واستراتيجية تسويق رقمي.
